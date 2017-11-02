@@ -9,6 +9,16 @@ RSpec.describe AddressBook do
     expect(entry.email).to eq expected_email
   end
 
+  describe "#demolish" do
+    it "should delete all AddressBook entries" do
+      book.import_from_csv("entries.csv")
+      expect(book.entries.count).to eq 5
+
+      book.demolish
+      expect(book.entries.count).to eq 0
+    end
+  end
+
   describe "attributes" do
     it "responds to entries" do
       expect(book).to respond_to(:entries)

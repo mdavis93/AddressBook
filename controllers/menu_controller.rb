@@ -14,6 +14,7 @@ class MenuController
     puts "3 - Seach For An Entry"
     puts "4 - Import Entries From A CSV"
     puts "5 - Exit"
+    puts "9 - Empty AddressBook"
     print "Enter Your Selection: "
 
     selection = gets.to_i
@@ -38,6 +39,17 @@ class MenuController
     when 5
       puts "Good-Bye!"
       exit(0)
+    when 9
+      print "\nAre you sure you want to completely wipe the AddressBook? y/n: "
+      resp = gets.chomp
+      if resp.downcase == "y"
+        @address_book.demolish
+        system "clear"
+        puts "AddressBook has been demolished!"
+      else
+        system "clear"
+      end
+      main_menu
     else
       system "clear"
       puts "Sorry, that is not a valid input"
