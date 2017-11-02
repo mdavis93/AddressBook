@@ -11,14 +11,14 @@ class AddressBook
   def add_entry(name, phone_number, email)
     index = 0
 
-    entries.each do |entry|
+    @entries.each do |entry|
       if name < entry.name
         break
       end
       index += 1
     end
 
-    entries.insert(index, Entry.new(name, phone_number, email))
+    @entries.insert(index, Entry.new(name, phone_number, email))
   end
 
   def import_from_csv(file_name)
@@ -32,20 +32,28 @@ class AddressBook
 
   def binary_search(name)
     lower = 0
-    upper = entries.length - 1
+    upper = @entries.length - 1
 
     while lower <= upper
       mid = (lower + upper) / 2
-      mid_name = entries[mid].name
+      mid_name = @entries[mid].name
 
       if name == mid_name
-        return entries[mid]
+        return @entries[mid]
       elsif name < mid_name
         upper = mid - 1
       elsif name > mid_name
         lower = mid + 1
       end
     end
+    return nil
+  end
+
+  def iterative_search(name)
+    @entries.each do |entry|
+      return entry if entry.name == name
+    end
+
     return nil
   end
 end
