@@ -1,10 +1,12 @@
 require_relative 'entry'
 require 'csv'
+require 'record_manager/base'
 
-class AddressBook
+class AddressBook < RecordManager::Base
   attr_reader :entries
 
-  def initialize
+  def initialize(options={})
+    super
     @entries = []
   end
 
@@ -46,6 +48,6 @@ class AddressBook
         lower = mid + 1
       end
     end
-    return nil
+    nil
   end
 end

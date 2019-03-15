@@ -1,0 +1,19 @@
+PATH
+  remote: ../RecordManager
+  specs:
+    record_manager (0.0.0)
+      sqlite3 (~> 1.3)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    sqlite3 (1.4.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  record_manager!
+
+BUNDLED WITH
+   1.16.5
