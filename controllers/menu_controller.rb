@@ -215,7 +215,7 @@ class MenuController
   end
 
   def delete_entry(entry)
-    entry.destroy
+    address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted."
   end
 end
