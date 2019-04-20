@@ -3,13 +3,10 @@ require 'csv'
 require 'record_manager/base'
 
 class AddressBook < RecordManager::Base
+  has_many :entries
 
   def add_entry(name, phone, email)
     Entry.create(name: name, phone_number: phone, email: email, address_book_id: self.id)
-  end
-
-  def entries
-    Entry.where(address_book_id: self.id)
   end
 
   def find_entry(name)
